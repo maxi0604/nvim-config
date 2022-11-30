@@ -114,3 +114,7 @@ local lsp = require 'lspconfig'
   lsp['sumneko_lua'].setup {
     capabilities = capabilities
   }
+
+  lsp["jdtls"].setup {
+    capabilities = capabilities
+  }
