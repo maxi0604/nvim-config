@@ -1,9 +1,5 @@
 packer = require('packer')
 
-packer.init {
-  max_jobs = 16
-}
-
 return packer.startup(
   function(use)
     -- Packer can manage itself
