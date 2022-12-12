@@ -129,3 +129,7 @@ lsp["jdtls"].setup {
 lsp["pylsp"].setup {
   capabilities = capabilities
 }
+
+lsp["rust_analyzer"].setup {
+  capabilities = capabilities
+}
