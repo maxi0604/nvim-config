@@ -27,4 +27,6 @@ return packer.startup(
       }
     }
     -- use 'andweeb/presence.nvim'
+
+    use 'pgilad/vim-skeletons'
   end)
