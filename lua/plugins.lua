@@ -1,4 +1,4 @@
-packer = require('packer')
+local packer = require('packer')
 
 return packer.startup(
   function(use)
@@ -28,5 +28,5 @@ return packer.startup(
     }
     -- use 'andweeb/presence.nvim'
 
-    use 'pgilad/vim-skeletons'
+    use 'noahfrederick/vim-skeleton'
   end)
