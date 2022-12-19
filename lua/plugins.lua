@@ -41,4 +41,5 @@ function(use)
   }
 
   use 'onsails/lspkind.nvim'
+  use 'Mofiqul/vscode.nvim'
 end)

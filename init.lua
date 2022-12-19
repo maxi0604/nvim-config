@@ -1,7 +1,10 @@
 require('plugins')
 require('config')
 
--- lualine deifault
+local c = require('vscode.colors')
+require('vscode').setup({})
+
+-- lualine default
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -139,3 +142,6 @@ for _, lsp_str in pairs(default_lsps) do
     capabilities = cmp_capabilities
   })
 end
+
+-- local c = require('vscode.colors')
+-- require('vscode').setup({})
