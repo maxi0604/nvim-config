@@ -3,15 +3,17 @@ require('config')
 
 local setup_color = not os.getenv("NVIM_CFG_NOCOLOR")
 if setup_color then
-  local c = require('vscode.colors')
-  require('vscode').setup({})
+  require('vscode.colors')
+  require('vscode').setup({
+    transparent = true
+  })
 end
 
 local lualine_theme
 if setup_color then
   lualine_theme = 'lualine.themes.vscode'
 else
-  lualine_theme = 'lualine.themes.vscode'
+  lualine_theme = 'lualine.themes.auto'
 end
 -- lualine default
 require('lualine').setup {
@@ -98,7 +100,9 @@ cmp.setup({
   }),
 
   formatting = {
-    format = lspkind.cmp_format()
+    format = lspkind.cmp_format({
+      mode = "symbol"
+    })
   }
 })
 
@@ -152,5 +156,6 @@ for _, lsp_str in pairs(default_lsps) do
   })
 end
 
+vim.cmd('source cmp_colors.vim')
 -- local c = require('vscode.colors')
 -- require('vscode').setup({})
