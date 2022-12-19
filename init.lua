@@ -155,7 +155,3 @@ for _, lsp_str in pairs(default_lsps) do
     capabilities = cmp_capabilities
   })
 end
-
-vim.cmd('source cmp_colors.vim')
--- local c = require('vscode.colors')
--- require('vscode').setup({})
