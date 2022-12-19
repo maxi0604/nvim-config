@@ -125,7 +125,7 @@ lsp['sumneko_lua'].setup {
 
 local default_lsps = {"jdtls", "pylsp", "rust_analyzer"}
 
-for i, lsp_str in ipairs(default_lsps) do
+for _, lsp_str in pairs(default_lsps) do
   lsp[lsp_str].setup({
     capabilities = cmp_capabilities
   })
