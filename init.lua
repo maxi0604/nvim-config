@@ -109,10 +109,11 @@ cmp.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+--LSPS requiring special configuration
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 lsp['sumneko_lua'].setup {
-  capabilities = capabilities,
+  capabilities = cmp_capabilities,
   settings = { 
     Lua = {
       telemetry = {
@@ -122,14 +123,10 @@ lsp['sumneko_lua'].setup {
   }
 }
 
-lsp["jdtls"].setup {
-  capabilities = capabilities
-}
+local default_lsps = {"jdtls", "pylsp", "rust_analyzer"}
 
-lsp["pylsp"].setup {
-  capabilities = capabilities
-}
-
-lsp["rust_analyzer"].setup {
-  capabilities = capabilities
-}
+for i, lsp_str in ipairs(default_lsps) do
+  lsp[lsp_str].setup({
+    capabilities = cmp_capabilities
+  })
+end
