@@ -9,12 +9,7 @@ if setup_color then
   })
 end
 
-local lualine_theme
-if setup_color then
-  lualine_theme = 'lualine.themes.vscode'
-else
-  lualine_theme = 'lualine.themes.auto'
-end
+local lualine_theme = 'lualine.themes.vscode'
 -- lualine default
 require('lualine').setup {
   options = {
