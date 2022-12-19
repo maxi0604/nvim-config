@@ -1,16 +1,23 @@
 require('plugins')
 require('config')
 
-if not os.getenv("NVIM_CFG_NOCOLOR") then
+local setup_color = not os.getenv("NVIM_CFG_NOCOLOR")
+if setup_color then
   local c = require('vscode.colors')
   require('vscode').setup({})
 end
 
+local lualine_theme
+if setup_color then
+  lualine_theme = 'lualine.themes.vscode'
+else
+  lualine_theme = 'lualine.themes.vscode'
+end
 -- lualine default
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = require('lualine.themes.powerline_dark'),
+    theme = require(lualine_theme),
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
