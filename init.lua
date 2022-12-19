@@ -1,8 +1,10 @@
 require('plugins')
 require('config')
 
-local c = require('vscode.colors')
-require('vscode').setup({})
+if not os.getenv("NVIM_CFG_NOCOLOR") then
+  local c = require('vscode.colors')
+  require('vscode').setup({})
+end
 
 -- lualine default
 require('lualine').setup {
