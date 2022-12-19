@@ -12,6 +12,7 @@ require('lualine').setup {
       statusline = {},
       winbar = {},
     },
+
     ignore_focus = {},
     always_divide_middle = true,
     globalstatus = false,
@@ -47,8 +48,8 @@ require('lualine').setup {
 local lsp = require 'lspconfig'
 
 -- Set up nvim-cmp.
-local cmp = require'cmp'
-
+local cmp = require("cmp")
+local lspkind = require("lspkind")
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -63,6 +64,7 @@ cmp.setup({
     -- completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
   },
+
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -70,15 +72,22 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
-  }, {
+  },
+
+  {
     { name = 'buffer' },
-  })
+  }),
+
+  formatting = {
+    format = lspkind.cmp_format()
+  }
 })
 
 -- Set configuration for specific filetype.
