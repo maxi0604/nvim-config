@@ -9,6 +9,8 @@ fi
 if [ -n $TERMUX_VERSION ]; then
   echo "termux detected. running pkg install"
   yes | pkg install rust-analyzer lua-language-server
+elif [ -x "$(command -v foo)" ] then
+  sudo pacman -Syu rust-analyzer lua-language-server
 fi
 
 echo "installing python through pip"
