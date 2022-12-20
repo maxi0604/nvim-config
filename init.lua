@@ -53,8 +53,6 @@ require('lualine').setup {
   extensions = {}
 }
 
--- lsp and coq completion
-local lsp = require 'lspconfig'
 
 -- Set up nvim-cmp.
 local cmp = require("cmp")
@@ -128,25 +126,26 @@ cmp.setup.cmdline(':', {
   })
 })
 
--- Set up lspconfig.
---LSPS requiring special configuration
+-- Set up lsp config.
+local lspconfig = require 'lspconfig'
 local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-lsp['sumneko_lua'].setup {
-  capabilities = cmp_capabilities,
-  settings = { 
-    Lua = {
-      telemetry = {
-        enabled = false
+
+local default_lsps = {
+  jdtls = {},
+  pylsp = {},
+  rust_analyzer = {},
+  sumneko_lua = {
+    settings = {
+      Lua = {
+        telemetry = {
+          enabled = false
+        }
       }
     }
   }
 }
 
-local default_lsps = {"jdtls", "pylsp", "rust_analyzer"}
-
-for _, lsp_str in pairs(default_lsps) do
-  lsp[lsp_str].setup({
-    capabilities = cmp_capabilities
-  })
+for lsp, config in pairs(default_lsps) do
+  config.capabilities = cmp_capabilities
+  lspconfig[tostring(lsp)].setup(config)
 end
