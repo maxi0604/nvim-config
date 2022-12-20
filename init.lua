@@ -149,3 +149,6 @@ for lsp, config in pairs(default_lsps) do
   config.capabilities = cmp_capabilities
   lspconfig[tostring(lsp)].setup(config)
 end
+
+-- setup skeleton path
+vim.g["skeleton_template_dir"] = (os.getenv("XDG_CONFIG_HOME") or "~/.config") .. "/nvim/skeleton"
