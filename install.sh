@@ -11,14 +11,14 @@ if [ -n "$TERMUX_VERSION" ]; then
   yes | pkg install rust-analyzer lua-language-server
 elif [ -x "$(command -v pacman)" ]; then
   echo "pacman detected. please grant permission for installing rust-analyzer and lua-language-server."
-  sudo pacman -Syu --noconfirm --needed rust-analyzer lua-language-server
+  sudo pacman -S --noconfirm --needed rust-analyzer lua-language-server
 else
   echo "ERROR: your package manager is not supported. please install rust-analyzer and lua-language-server"
 fi
 
 if [ ! -x "$(command -v pylsp)" ]; then
   echo "installing pylsp through pip"
-  pip install python-lsp-server
+  # pip install python-lsp-server
 else
   echo "pylsp is already available, please keep it updated with your preferred method"
 fi
