@@ -42,4 +42,6 @@ function(use)
 
   use 'onsails/lspkind.nvim'
   use 'Mofiqul/vscode.nvim'
+
+  use 'lervag/vimtex'
 end)
