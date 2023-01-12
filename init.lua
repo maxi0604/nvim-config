@@ -89,6 +89,7 @@ cmp.setup({
   },
 
   {
+    { name = 'omni' },
     { name = 'buffer' },
   }),
 
