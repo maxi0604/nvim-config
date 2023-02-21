@@ -1,20 +1,21 @@
 require('plugins')
 require('config')
 
-local setup_color = not os.getenv("NVIM_CFG_NOCOLOR")
-if setup_color then
-  require('vscode.colors')
-  require('vscode').setup({
-    transparent = true
-  })
-end
+-- local setup_color = not os.getenv("NVIM_CFG_NOCOLOR")
+-- if setup_color then
+--   require('vscode.colors')
+--   require('vscode').setup({
+--     transparent = true
+--   })
+-- end
 
-local lualine_theme = 'lualine.themes.vscode'
+vim.cmd.colorscheme('sonokai')
+-- local lualine_theme = 'lualine.themes.vscode'
 -- lualine default
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = require(lualine_theme),
+    -- theme = require(lualine_theme),
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -70,7 +71,7 @@ cmp.setup({
   window = {
     -- completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
-  },
+ },
 
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -89,8 +90,8 @@ cmp.setup({
   },
 
   {
-    { name = 'omni' },
     { name = 'buffer' },
+    -- { name = 'omni' },
   }),
 
   formatting = {
@@ -117,7 +118,6 @@ cmp.setup.cmdline({ '/', '?' }, {
   }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
@@ -126,7 +126,6 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
 -- Set up lsp config.
 local lspconfig = require 'lspconfig'
 local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -135,19 +134,13 @@ local default_lsps = {
   jdtls = {},
   pylsp = {},
   rust_analyzer = {},
-  sumneko_lua = {
-    settings = {
-      Lua = {
-        telemetry = {
-          enabled = false
-        }
-      }
-    }
-  }
+  lua_ls = {},
 }
 
 for lsp, config in pairs(default_lsps) do
-  config.capabilities = cmp_capabilities
+  if false then
+    config.capabilities = cmp_capabilities
+  end
   lspconfig[tostring(lsp)].setup(config)
 end
 

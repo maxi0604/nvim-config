@@ -41,7 +41,9 @@ function(use)
   }
 
   use 'onsails/lspkind.nvim'
-  use 'Mofiqul/vscode.nvim'
-
+  -- use 'Mofiqul/vscode.nvim'
+  -- use 'arcticicestudio/nord-vim'
+  -- use 'shaunsingh/nord.nvim'
+  use 'sainnhe/sonokai'
   use 'lervag/vimtex'
 end)
